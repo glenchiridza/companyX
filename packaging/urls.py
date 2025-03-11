@@ -1,6 +1,6 @@
 from django.urls import path
 
-from views.warehouse_view import (
+from packaging.views.warehouse_view import (
     WareHouseListView, WareHouseCreateView, WareHouseDetailView, WareHouseUpdateView
 )
 

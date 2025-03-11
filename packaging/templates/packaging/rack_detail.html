@@ -1,0 +1,26 @@
+{%  extends 'base.html' %}
+
+{%  block content %}
+
+<div class="container text-center">
+    <h5>Rack Details</h5>
+</div>
+
+<div class="container">
+
+    <a class="btn btn-sm text-white" href="{% url 'packaging-service:rack_create' %}">Add New  Rack</a>
+
+    <h5>{{ rack.name }} Rack</h5>
+    <p>Max Allowed Capacity (Kgs): {{ rack.max_allowed_capacity_in_kgs }}</p>
+    
+    <div class="row">
+        <a class="text-success" href="{% url 'packaging-service:rack_update' rack.pk %}">update</a>
+        <a class="text-danger" href="{% url 'packaging-service:rack_delete' rack.pk %}">delete</a>
+    </div>
+
+</div>
+
+
+
+
+{%  endblock %}

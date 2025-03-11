@@ -34,8 +34,17 @@ class WareHouseCreateView(generic.CreateView):
 
 class WareHouseUpdateView(generic.UpdateView):
     template_name = 'packaging/ware_house_update.html'
-    queryset = Warehouse.objects.all()
     form_class = WareHouseForm
+
+    def get_queryset(self):
+        return Warehouse.objects.filter(pk=self.kwargs['pk'])
+
+    def get_success_url(self):
+        return reverse('packaging-service:warehouse_list')
+
+
+class WareHouseDeleteView(generic.DeleteView):
+    template_name = 'packaging/delete.html'
 
     def get_queryset(self):
         return Warehouse.objects.filter(pk=self.kwargs['pk'])

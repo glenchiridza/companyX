@@ -1,0 +1,29 @@
+{%  extends 'base.html' %}
+
+{%  block content %}
+
+<div class="container text-center">
+
+    Rack(s) Count: {{ racks.count }}
+    <br/>
+
+    <a class="btn btn-sm text-white" href="{% url 'packaging-service:rack_create' %}">Add New  Rack</a>
+
+</div>
+
+<div class="container mt-5">
+    <ol>
+        {% for rack in racks %}
+
+                <li>
+                    <a class="text-success" href="{% url 'packaging-service:rack_detail' rack.pk %}">{{ rack }}</a>
+
+                </li>
+        {%  endfor %}
+    </ol>
+
+
+
+</div>
+
+{%  endblock %}

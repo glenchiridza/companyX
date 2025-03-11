@@ -44,7 +44,6 @@ class Line(models.Model):
 class Pallet(models.Model):
     serial_number = models.CharField(max_length=100)
     capacity_limit_number = models.PositiveIntegerField(default=0)
-    warehouse = models.ForeignKey(Warehouse, on_delete=models.CASCADE)
     package = models.ForeignKey(Package, on_delete=models.CASCADE)
     rack = models.ForeignKey('Rack', on_delete=models.CASCADE)
 
@@ -52,3 +51,4 @@ class Pallet(models.Model):
 class Rack(models.Model):
     name = models.CharField(max_length=20)
     weight_capacity = models.PositiveIntegerField(default=0)
+    warehouse = models.ForeignKey(Warehouse, on_delete=models.CASCADE)

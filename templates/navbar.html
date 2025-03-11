@@ -26,23 +26,16 @@
 										<li><a href="{% url 'packaging-service:warehouse_list' %}">Warehouse</a></li>
 										<li><a href="{% url 'packaging-service:rack_list' %}">Rack</a></li>
 										<li><a href="{% url 'packaging-service:pallet_list' %}">Pallet</a></li>
-										<li><a href="{% url 'customer_service:additional_services_create' %}">Additional Services</a></li>
+										<li><a href="{% url 'packaging-service:line_list' %}">Line</a></li>
 									</ul>
 								</li>
 
 								{%  endif %}
 
 
-								{% if request.user.is_agent %}
-									<li><a href="{% url 'user:user_list' %}">Registered Users</a></li>
-									<li><a href="{% url 'customer_service:customer_list' %}">Customers</a></li>
 
-								{%  endif %}
-
-
-								{% if request.user.is_branch_manager %}
-									<li><a href="{% url 'customer_service:customer_list' %}">Customers</a></li>
-									<li><a href="{% url 'customer_service:memo_list' %}">Customer Memos</a></li>
+								{% if request.user.is_logistics_manager %}
+									<li><a href="{% url 'packaging-service:line_list' %}">Approve Package Mix</a></li>
 
 								</li>
 								{%  endif %}

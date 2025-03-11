@@ -11,6 +11,9 @@ from packaging.views.rack_view import (
 from packaging.views.pallet_view import (
     PalletListView, PalletCreateView, PalletDetailView, PalletUpdateView,PalletDeleteView
 )
+from packaging.views.line_view import (
+    LineistView, LineCreateView, LineDetailView, LineUpdateView,LineDeleteView
+)
 
 app_name = 'packaging'
 
@@ -35,4 +38,11 @@ urlpatterns = [
     path('pallet-detail/<int:pk>/', PalletDetailView.as_view(), name='pallet_detail'),
     path('pallet/<int:pk>/update', PalletUpdateView.as_view(), name='pallet_update'),
     path('pallet/<int:pk>/delete', PalletDeleteView.as_view(), name='pallet_delete'),
+
+    ### line urls
+    path('create-line/', LineCreateView.as_view(), name='line_create'),
+    path('list-line/', LineListView.as_view(), name='line_list'),
+    path('line-detail/<int:pk>/', LineetailView.as_view(), name='line_detail'),
+    path('line/<int:pk>/update', LineUpdateView.as_view(), name='line_update'),
+    path('line/<int:pk>/delete', LineDeleteView.as_view(), name='line_delete'),
 ]

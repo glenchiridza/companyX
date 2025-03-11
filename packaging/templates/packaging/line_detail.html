@@ -1,0 +1,30 @@
+{%  extends 'base.html' %}
+
+{%  block content %}
+
+<div class="container text-center">
+    <h5>Line Details</h5>
+</div>
+
+<div class="container">
+
+    <a class="btn btn-sm text-white" href="{% url 'packaging-service:line_create' %}">Add New  Line</a>
+
+    <h5>Name : {{ line.name }}</h5>
+    <p>Max Capacity Allowed in (kgs) Loose Packages: {{ line.max_capacity_allowed_in_kgs }}</p>
+    <p>Number of Cartons: {{ line.number_of_cartons }}</p>
+    <p>Available Capacity in (kgs) : {{ line.current_available_capacity }}</p>
+    <p>Located in Warehouse: {{line.warehouse.name}}</p>
+    <p>Is Special Case (Contains Mixed Packages: {{line.is_special_case}}</p>
+
+    <div class="row">
+        <a class="text-success col-md-6" href="{% url 'packaging-service:line_update' line.pk %}">Update</a>
+        <a class="text-danger col-md-6" href="{% url 'packaging-service:line_delete' line.pk %}">Delete</a>
+    </div>
+
+</div>
+
+
+
+
+{%  endblock %}

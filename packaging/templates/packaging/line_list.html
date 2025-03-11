@@ -1,0 +1,29 @@
+{%  extends 'base.html' %}
+
+{%  block content %}
+
+<div class="container text-center">
+
+    Line(s) Count: {{ lines.count }}
+    <br/>
+
+    <a class="btn btn-sm text-white" href="{% url 'packaging-service:line_create' %}">Add New  Line</a>
+
+</div>
+
+<div class="container mt-5">
+    <ol>
+        {% for line in lines %}
+
+                <li>
+                    <a class="text-success" href="{% url 'packaging-service:line_detail' line.pk %}">Line Name{{ line.name }}</a>
+
+                </li>
+        {%  endfor %}
+    </ol>
+
+
+
+</div>
+
+{%  endblock %}

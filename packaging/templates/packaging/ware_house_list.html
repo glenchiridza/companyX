@@ -2,26 +2,33 @@
 
 {%  block content %}
 
+<div class="container text-center">
 
-    Warehouse(s) Count: {{ warehouses.count }}
+    Warehouse(s) Available Count: {{ warehouses.count }}
+    <br/>
+
+    <a class="btn btn-sm text-white" href="{% url 'packaging-service:warehouse_create' %}">Add New  Warehouse</a>
+
+</div>
+
+<div class="container mt-5">
     <ol>
         {% for warehouse in warehouses %}
 
-            {% if not customer.is_declined %}
                 <li>
-                    <a href="{% url 'packaging-service:warehouse_detail' customer.pk %}">{{ warehouse }}</a>
+                    <a class="text-success" href="{% url 'packaging-service:warehouse_detail' warehouse.pk %}">{{ warehouse }}</a>
 
-                    <a href="{% url 'packaging-service:warehouse_update' customer.pk %}">update Record: {{ warehouse }}</a>
                 </li>
-            {% endif %}
         {%  endfor %}
     </ol>
 
 
     {% if warehouse.count == 3 %}
         <hr/>
-<p class="text-danger">ware house is now full</p>
+<p class="text-danger">Warehouse is now full</p>
     {%  endif %}
 
+
+</div>
 
 {%  endblock %}

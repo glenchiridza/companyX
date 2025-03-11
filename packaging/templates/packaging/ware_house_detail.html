@@ -2,11 +2,18 @@
 
 {%  block content %}
 
-    <h1>Warehouse Details</h1>
+<div class="container text-center">
+    <h5>Warehouse Details</h5>
+</div>
 
-    <a href="{% url 'packaging-service:warehouse_create' customer.pk %}">Add Warehouse</a>
+<div class="container">
 
-    {{ warehouse }}
+    <a class="btn btn-sm text-white" href="{% url 'packaging-service:warehouse_create' %}">Add New  Warehouse</a>
+
+    <h5>{{ warehouse.name }} Warehouse</h5>
+    <p>Max Allowed Capacity (Kgs): {{ warehouse.max_allowed_capacity_in_kgs }}</p>
+</div>
+
 
 
 

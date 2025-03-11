@@ -23,7 +23,7 @@ class Package(models.Model):
     package_type = models.CharField(max_length=100, choices=PACKAGE_TYPE)
     serial_number = models.CharField(max_length=100, unique=True)
     quality_mark = models.ForeignKey(QualityMark, on_delete=models.CASCADE)
-    line = models.ForeignKey(Line, on_delete=models.CASCADE)
+    line = models.ForeignKey('Line', on_delete=models.CASCADE)
 
     def __str__(self):
         return f'package serial number:: {self.serial_number}'

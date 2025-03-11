@@ -1,0 +1,33 @@
+{%  extends 'base.html' %}
+
+{%  block content %}
+
+
+    Customer Application(s) Count: {{ customers.count }}
+    <ol>
+        {% for customer in customers %}
+
+            {% if not customer.is_declined %}
+                <li>
+                    <a href="{% url 'customer-service:customer_detail' customer.pk %}">{{ customer }}</a>
+                </li>
+
+            {% else %}
+                <h1>From Operations Department: </h1>
+                <h5>following document(s) have been declined due to incompleteness</h5>
+                <p>Checkout form and update accordingly</p>
+                <li>
+                    <a href="{% url 'customer-service:customer_update' customer.pk %}">update Record: {{ customer }}</a>
+                </li>
+            {% endif %}
+        {%  endfor %}
+    </ol>
+
+
+    {% if customers.count == 3 %}
+        <hr/>
+        <a href="{% url 'customer-service:submit_documents' %}">Submit Documents to Branch Manager</a>
+    {%  endif %}
+
+
+{%  endblock %}

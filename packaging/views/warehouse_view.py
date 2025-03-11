@@ -9,7 +9,7 @@ from packaging.forms import WareHouseForm
 
 class WareHouseListView(generic.ListView):
     template_name = 'packaging/ware_house_list.html'
-    context_object_name = 'customers'
+    context_object_name = 'warehouses'
 
     def get_queryset(self):
         warehouse = Warehouse.objects.all()
@@ -18,7 +18,7 @@ class WareHouseListView(generic.ListView):
 
 class WareHouseDetailView(generic.DetailView):
     template_name = 'packaging/ware_house_detail.html'
-    context_object_name = 'customer'
+    context_object_name = 'warehouse'
 
     def get_queryset(self):
         return Warehouse.objects.filter(pk=self.kwargs['pk'])
@@ -29,7 +29,7 @@ class WareHouseCreateView(generic.CreateView):
     form_class = WareHouseForm
 
     def get_success_url(self):
-        return reverse('customer-service:customer_list')
+        return reverse('packaging-service:warehouse_list')
 
 
 class WareHouseUpdateView(generic.UpdateView):
@@ -41,4 +41,4 @@ class WareHouseUpdateView(generic.UpdateView):
         return Warehouse.objects.filter(pk=self.kwargs['pk'])
 
     def get_success_url(self):
-        return reverse('customer-service:customer_list')
+        return reverse('packaging-service:warehouse_list')

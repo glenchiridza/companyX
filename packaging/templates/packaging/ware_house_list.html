@@ -3,30 +3,24 @@
 {%  block content %}
 
 
-    Customer Application(s) Count: {{ customers.count }}
+    Warehouse(s) Count: {{ warehouses.count }}
     <ol>
-        {% for customer in customers %}
+        {% for warehouse in warehouses %}
 
             {% if not customer.is_declined %}
                 <li>
-                    <a href="{% url 'customer-service:customer_detail' customer.pk %}">{{ customer }}</a>
-                </li>
+                    <a href="{% url 'packaging-service:warehouse_detail' customer.pk %}">{{ warehouse }}</a>
 
-            {% else %}
-                <h1>From Operations Department: </h1>
-                <h5>following document(s) have been declined due to incompleteness</h5>
-                <p>Checkout form and update accordingly</p>
-                <li>
-                    <a href="{% url 'customer-service:customer_update' customer.pk %}">update Record: {{ customer }}</a>
+                    <a href="{% url 'packaging-service:warehouse_update' customer.pk %}">update Record: {{ warehouse }}</a>
                 </li>
             {% endif %}
         {%  endfor %}
     </ol>
 
 
-    {% if customers.count == 3 %}
+    {% if warehouse.count == 3 %}
         <hr/>
-        <a href="{% url 'customer-service:submit_documents' %}">Submit Documents to Branch Manager</a>
+<p class="text-danger">ware house is now full</p>
     {%  endif %}
 
 

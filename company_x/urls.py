@@ -12,7 +12,7 @@ urlpatterns = [
        path('', LandingPageView.as_view(), name='landing_page'),
        path('admin/', admin.site.urls),
        path('users/', include('user.urls', namespace='users')),
-       path('packaging/', include('packaging.urls', namespace='packaging')),
+       path('packaging/', include('packaging.urls', namespace='packaging-service')),
        path('login/', LoginView.as_view(), name='login'),
        path('logout/', LogoutView.as_view(), name='logout'),
        path('reset-password/', PasswordResetView.as_view(), name='reset-password'),

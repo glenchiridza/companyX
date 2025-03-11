@@ -2,19 +2,12 @@
 
 {%  block content %}
 
-    <h1>Customer Detail</h1>
+    <h1>Warehouse Details</h1>
 
-    <a href="{% url 'customer_service:customer_create' customer.pk %}">Add Customer</a>
+    <a href="{% url 'packaging-service:warehouse_create' customer.pk %}">Add Warehouse</a>
 
-    {{ customer }}
-
-    {% if customers.count == 3 %}
-        <a href="{% url 'customer-service:memo_create' %}">Create Memo</a>
-    {%  endif %}
+    {{ warehouse }}
 
 
- {% if request.user.is_branch_manager}
-      <a href="{% url 'customer-service:submit_documents' %}">Submit to operations</a>
- {%  endif %}#}
 
 {%  endblock %}

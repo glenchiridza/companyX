@@ -4,7 +4,7 @@
 
 <div class="container text-center">
 
-    Pallet(s) Count: {{ pallet.count }}
+    Pallet(s) Count: {{ pallets.count }}
     <br/>
 
     <a class="btn btn-sm text-white" href="{% url 'packaging-service:pallet_create' %}">Add New  Pallet</a>
@@ -13,10 +13,10 @@
 
 <div class="container mt-5">
     <ol>
-        {% for pallet in pallet %}
+        {% for pallet in pallets %}
 
                 <li>
-                    <a class="text-success" href="{% url 'packaging-service:pallet_detail' pallet.pk %}">{{ pallet.name }}</a>
+                    <a class="text-success" href="{% url 'packaging-service:pallet_detail' pallet.pk %}">Pallet By Serial Number :{{ pallet.serial_number }}</a>
 
                 </li>
         {%  endfor %}

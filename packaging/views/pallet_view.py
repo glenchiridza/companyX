@@ -1,3 +1,5 @@
+import uuid
+
 from django.shortcuts import render, reverse
 from django.views import generic
 
@@ -30,20 +32,9 @@ class PalletCreateView(generic.CreateView):
 
         if form.is_valid():
             pallet = form.save(commit=False)
+            pallet.serial_number = str(uuid.uuid4())
             pallet.current_available_capacity = pallet.capacity_limit_number
-            packages_in_pallet = Package.objects.get(pallet=pallet)
-            total_mass = 0
-            for package in packages_in_pallet:
-                total_mass += package.quality_mark.mass_of_product
-            if pallet.rack.current_available_capacity > total_mass:
-                pallet.save()
-            else:
-                context = self.get_context_data(form=form)
-                context.update({"error_message": "Pallet of capacity : " + str(
-                    total_mass) + "kgs exceeds Rack capacity only left with " + str(
-                    pallet.rack.current_available_capacity) + "kgs in space. Try reducing pallet amount or choose a "
-                                                                 "different Rack with more capacity "})
-                return self.render_to_response(context)
+            pallet.save()
 
         return super(PalletCreateView, self).form_valid(form)
 

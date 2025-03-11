@@ -26,7 +26,7 @@ class User(AbstractUser):
     nationality = models.CharField(max_length=40)
     other_names = models.CharField(max_length=140,null=True, blank=True)
     gender = models.CharField(max_length=10,choices=GENDER)
-    is_branch_manager = models.BooleanField(default=False)
+    is_logistics_manager = models.BooleanField(default=False)
     is_system_operator = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

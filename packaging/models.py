@@ -1,3 +1,4 @@
+from django.core.validators import MaxValueValidator
 from django.db import models
 
 PACKAGE_TYPE = (
@@ -36,7 +37,7 @@ class Line(models.Model):
     number_of_cartons = models.PositiveIntegerField(default=0)
     warehouse = models.ForeignKey(Warehouse, on_delete=models.CASCADE)
     is_special_case = models.BooleanField(default=False)
-    max_packages = models.PositiveIntegerField(default=3)
+    max_packages = models.PositiveIntegerField(default=0, validators=[MaxValueValidator(3)])
 
     def __str__(self):
         return f' line belong to warehouse:: {self.warehouse.name}'
@@ -48,9 +49,15 @@ class Pallet(models.Model):
     current_available_capacity = models.PositiveIntegerField(default=0)
     rack = models.ForeignKey('Rack', on_delete=models.CASCADE)
 
+    def __str__(self):
+        return f'Pallet serial:: {self.serial_number}'
+
 
 class Rack(models.Model):
     name = models.CharField(max_length=20)
     weight_capacity = models.PositiveIntegerField(default=0)
     current_available_capacity = models.PositiveIntegerField(default=0)
     warehouse = models.ForeignKey(Warehouse, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name

@@ -21,4 +21,4 @@ class PalletForm(ModelForm):
     class Meta:
         model = Pallet
         fields = "__all__"
-        exclude = ('current_available_capacity',)
+        exclude = ('current_available_capacity', 'serial_number',)

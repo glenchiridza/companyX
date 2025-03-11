@@ -28,6 +28,15 @@ class WareHouseCreateView(generic.CreateView):
     template_name = 'packaging/ware_house_create.html'
     form_class = WareHouseForm
 
+    def form_valid(self, form):
+
+        if form.is_valid():
+            warehouse = form.save(commit=False)
+            warehouse.current_available_capacity = warehouse.max_allowed_capacity_in_kgs
+            warehouse.save()
+
+        return super(WareHouseCreateView,self).form_valid(form)
+
     def get_success_url(self):
         return reverse('packaging-service:warehouse_list')
 

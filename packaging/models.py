@@ -9,6 +9,7 @@ PACKAGE_TYPE = (
 class Warehouse(models.Model):
     name = models.CharField(max_length=100)
     max_allowed_capacity_in_kgs = models.PositiveIntegerField(default=0)
+    current_available_capacity = models.PositiveIntegerField(default=0)
 
     def __str__(self):
         return f'Warehouse name:: {self.name}'
@@ -51,4 +52,5 @@ class Pallet(models.Model):
 class Rack(models.Model):
     name = models.CharField(max_length=20)
     weight_capacity = models.PositiveIntegerField(default=0)
+    current_available_capacity = models.PositiveIntegerField(default=0)
     warehouse = models.ForeignKey(Warehouse, on_delete=models.CASCADE)

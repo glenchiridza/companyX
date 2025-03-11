@@ -12,10 +12,11 @@
 
     <h5>{{ warehouse.name }} Warehouse</h5>
     <p>Max Allowed Capacity (Kgs): {{ warehouse.max_allowed_capacity_in_kgs }}</p>
+    <p>Available Space Capacity (Kgs): {{ warehouse.current_available_capacity }}</p>
 
     <div class="row">
-        <a class="text-success" href="{% url 'packaging-service:warehouse_update' warehouse.pk %}">update</a>
-        <a class="text-danger" href="{% url 'packaging-service:warehouse_delete' warehouse.pk %}">delete</a>
+        <a class="text-success col-md-6" href="{% url 'packaging-service:warehouse_update' warehouse.pk %}">Update</a>
+        <a class="text-danger col-md-6" href="{% url 'packaging-service:warehouse_delete' warehouse.pk %}">Delete</a>
     </div>
 
 </div>

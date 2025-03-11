@@ -11,11 +11,12 @@
     <a class="btn btn-sm text-white" href="{% url 'packaging-service:rack_create' %}">Add New  Rack</a>
 
     <h5>{{ rack.name }} Rack</h5>
-    <p>Max Allowed Capacity (Kgs): {{ rack.max_allowed_capacity_in_kgs }}</p>
+    <p>Max Allowed Capacity (Kgs): {{ rack.weight_capacity }}</p>
+    <p>Located in Warehouse: {{rack.warehouse.name}}</p>
     
     <div class="row">
-        <a class="text-success" href="{% url 'packaging-service:rack_update' rack.pk %}">update</a>
-        <a class="text-danger" href="{% url 'packaging-service:rack_delete' rack.pk %}">delete</a>
+        <a class="text-success col-md-6" href="{% url 'packaging-service:rack_update' rack.pk %}">Update</a>
+        <a class="text-danger col-md-6" href="{% url 'packaging-service:rack_delete' rack.pk %}">Delete</a>
     </div>
 
 </div>

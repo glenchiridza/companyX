@@ -16,7 +16,7 @@
         {% for rack in racks %}
 
                 <li>
-                    <a class="text-success" href="{% url 'packaging-service:rack_detail' rack.pk %}">{{ rack }}</a>
+                    <a class="text-success" href="{% url 'packaging-service:rack_detail' rack.pk %}">{{ rack.name }}</a>
 
                 </li>
         {%  endfor %}

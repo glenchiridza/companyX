@@ -23,8 +23,8 @@
 								{% if request.user.is_authenticated %}
 									<li class="active"><a>Packaging <i class="icofont-rounded-down"></i></a>
 									<ul class="dropdown">
-										<li><a href="{% url 'packaging-service:warehouse_create' %}">Warehouse</a></li>
-										<li><a href="{% url 'customer_service:spouse_details_create' %}">Spouse Details</a></li>
+										<li><a href="{% url 'packaging-service:warehouse_list' %}">Warehouse</a></li>
+										<li><a href="{% url 'customer_service:rack_list' %}">Rack</a></li>
 										<li><a href="{% url 'customer_service:nok_create' %}">Next of Kin</a></li>
 										<li><a href="{% url 'customer_service:additional_services_create' %}">Additional Services</a></li>
 									</ul>

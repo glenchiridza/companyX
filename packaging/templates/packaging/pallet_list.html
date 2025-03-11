@@ -1,0 +1,29 @@
+{%  extends 'base.html' %}
+
+{%  block content %}
+
+<div class="container text-center">
+
+    Pallet(s) Count: {{ pallet.count }}
+    <br/>
+
+    <a class="btn btn-sm text-white" href="{% url 'packaging-service:pallet_create' %}">Add New  Pallet</a>
+
+</div>
+
+<div class="container mt-5">
+    <ol>
+        {% for pallet in pallet %}
+
+                <li>
+                    <a class="text-success" href="{% url 'packaging-service:pallet_detail' pallet.pk %}">{{ pallet.name }}</a>
+
+                </li>
+        {%  endfor %}
+    </ol>
+
+
+
+</div>
+
+{%  endblock %}

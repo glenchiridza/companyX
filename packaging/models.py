@@ -24,7 +24,8 @@ class Package(models.Model):
     package_type = models.CharField(max_length=100, choices=PACKAGE_TYPE)
     serial_number = models.CharField(max_length=100, unique=True)
     quality_mark = models.ForeignKey(QualityMark, on_delete=models.CASCADE)
-    line = models.ForeignKey('Line', on_delete=models.CASCADE)
+    line = models.ForeignKey('Line', on_delete=models.CASCADE, null=True, blank=True)
+    pallet = models.ForeignKey('Pallet', on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
         return f'package serial number:: {self.serial_number}'
@@ -36,7 +37,6 @@ class Line(models.Model):
     warehouse = models.ForeignKey(Warehouse, on_delete=models.CASCADE)
     is_special_case = models.BooleanField(default=False)
     max_packages = models.PositiveIntegerField(default=3)
-    lod_offload = models.BooleanField(default=False)
 
     def __str__(self):
         return f' line belong to warehouse:: {self.warehouse.name}'
@@ -45,7 +45,7 @@ class Line(models.Model):
 class Pallet(models.Model):
     serial_number = models.CharField(max_length=100)
     capacity_limit_number = models.PositiveIntegerField(default=0)
-    package = models.ForeignKey(Package, on_delete=models.CASCADE)
+    current_available_capacity = models.PositiveIntegerField(default=0)
     rack = models.ForeignKey('Rack', on_delete=models.CASCADE)
 
 

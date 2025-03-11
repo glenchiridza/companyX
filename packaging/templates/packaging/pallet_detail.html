@@ -1,0 +1,28 @@
+{%  extends 'base.html' %}
+
+{%  block content %}
+
+<div class="container text-center">
+    <h5>Pallet Details</h5>
+</div>
+
+<div class="container">
+
+    <a class="btn btn-sm text-white" href="{% url 'packaging-service:pallet_create' %}">Add New  Pallet</a>
+
+    <h5>Serial Number : {{ pallet.serial_number }}</h5>
+    <p>Capacity Limit Number : {{ pallet.capacity_limit_number }}</p>
+    <p>Available Capacity Limit Number : {{ pallet.current_available_capacity }}</p>
+    <p>Located in Rack: {{pallet.rack.name}}</p>
+    
+    <div class="row">
+        <a class="text-success col-md-6" href="{% url 'packaging-service:pallet_update' pallet.pk %}">Update</a>
+        <a class="text-danger col-md-6" href="{% url 'packaging-service:pallet_delete' pallet.pk %}">Delete</a>
+    </div>
+
+</div>
+
+
+
+
+{%  endblock %}

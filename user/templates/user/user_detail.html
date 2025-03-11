@@ -1,0 +1,29 @@
+{%  extends 'base.html' %}
+
+{%  block content %}
+    <pre>
+
+
+    </pre>
+
+        <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="150">
+            <div class="col-xl-6 col-lg-8">
+
+    <h1>User Detail</h1>
+
+                <div class="row">
+
+                <p class="col-md-6"><span class="text-bold">FirstName: </span>{{ user.first_name }}</p>
+                <p class="col-md-6"><span class="text-bold">LastName: </span>{{ user.last_name }}</p>
+                <p class="col-md-6"><span class="text-bold">Date Of Birth: </span>{{ user.date_of_birth }}</p>
+                <p class="col-md-6"><span class="text-bold">Nationality: </span>{{ user.nationality }}</p>
+                </div>
+
+                <br/>
+                <a class="btn text-white" href="{% url 'customer_service:customer_create' user.pk %}">Add Customer</a>
+
+
+            </div>
+        </div>
+
+{%  endblock %}

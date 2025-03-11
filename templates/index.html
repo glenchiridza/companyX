@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <!-- Slider Area -->
+		<section class="slider">
+			<div class="hero-slider">
+				<!-- Start Single Slider -->
+				<div class="single-slider" style="background-image:url({% static 'img/bg1.jpg' %})">
+					<div class="container">
+						<div class="row">
+							<div class="col-lg-7">
+								<div class="text">
+									<h1>We Provide <span>Automation</span> Services That You Can <span>Trust!</span></h1>
+									<p>Access to a lot of features that can enhance your daily experiences. Efficient package management and with an advantage to track all product lines. Check all that is available in your warehouse on a single screen.
+                                        Easy to use App </p>
+									<div class="button">
+                                        {% if not request.user.is_authenticated %}
+										<a href="{% url 'login' %}" class="btn">Get Started</a>
+										<a href="https://hailcotton.com/" target="_blank" class="btn primary">HailAndCotton</a>
+                                        {%  endif %}
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- End Single Slider -->
+
+			</div>
+		</section>
+		<!--/ End Slider Area -->
+
+
+
+		<!-- Start Schedule Area -->
+		<section class="schedule">
+			<div class="container">
+				<div class="schedule-inner">
+					<div class="row">
+						<div class="col-lg-4 col-md-6 col-12 ">
+							<!-- single-schedule -->
+							<div class="single-schedule first">
+								<div class="inner">
+									<div class="icon">
+										<i class="fa fa-ambulance"></i>
+									</div>
+									<div class="single-content">
+										<span>Automation</span>
+										<h4>Automated Systems</h4>
+										<p>Easily process your packages in your warehouse and check all packages in dock</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-4 col-md-6 col-12">
+							<!-- single-schedule -->
+							<div class="single-schedule middle">
+								<div class="inner">
+									<div class="icon">
+										<i class="icofont-prescription"></i>
+									</div>
+									<div class="single-content">
+										<span>Intelligent Systems</span>
+										<h4>Get Things Done Fast</h4>
+										<p>Easily manage the packages, pallets, verify capacity limit.</p>
+
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-4 col-md-12 col-12">
+							<!-- single-schedule -->
+							<div class="single-schedule last">
+								<div class="inner">
+									<div class="icon">
+										<i class="icofont-ui-clock"></i>
+									</div>
+									<div class="single-content">
+										<span>System Support</span>
+										<h4>24/7</h4>
+										<ul class="time-sidual">
+                                            <p>Easily integrate system with your electronic devices and manage your packages on screen, simple as that.</p>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!--/End Start schedule Area -->
+
+{%  endblock %}

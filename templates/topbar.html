@@ -1,0 +1,36 @@
+<!-- Topbar -->
+
+	<div class="topbar">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6 col-md-5 col-12">
+					<!-- Contact -->
+					<ul class="top-link">
+						<li><a href="{% url 'landing_page' %}">Home</a></li>
+						{% if request.user.is_authenticated %}
+							<li><code class="text-success">(Logged In User : {{request.user}} )</code></li>
+
+						{% endif %}
+					</ul>
+					<!-- End Contact -->
+				</div>
+				<div class="col-lg-6 col-md-7 col-12">
+					<!-- Top Contact -->
+					<ul class="top-contact">
+						<li><i class="fa fa-phone"></i>+263 0000001</li>
+						<li><i class="fa fa-envelope"></i><a href="https://hailcotton.com">HailAndCotton</a></li>
+                        <li>
+                            {%  if request.user.is_authenticated %}
+                             <form method="post" action="{% url 'logout' %}">
+                                {% csrf_token %}
+                                <button class="btn" type="submit">logout</button>
+                            </form>
+                            {%  endif %}
+                        </li>
+					</ul>
+					<!-- End Top Contact -->
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- End Topbar -->

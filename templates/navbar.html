@@ -1,0 +1,76 @@
+
+<!-- Header Inner -->
+<div class="header-inner">
+	<div class="container">
+		<div class="inner">
+			<div class="row">
+				<div class="col-lg-3 col-md-3 col-12">
+					<!-- Start Logo -->
+					<div class="logo">
+						<a href="{% url 'landing_page' %}">CompanyX App</a>
+					</div>
+					<!-- End Logo -->
+					<!-- Mobile Nav -->
+					<div class="mobile-nav"></div>
+					<!-- End Mobile Nav -->
+				</div>
+				<div class="col-lg-7 col-md-9 col-12">
+					<!-- Main Menu -->
+					<div class="main-menu">
+						<nav class="navigation">
+							<ul class="nav menu">
+
+								{% if request.user.is_customer %}
+									<li class="active"><a>Add Personal Details <i class="icofont-rounded-down"></i></a>
+									<ul class="dropdown">
+										<li><a href="{% url 'customer_service:personal_identification_create' %}">Personal Identification</a></li>
+										<li><a href="{% url 'customer_service:spouse_details_create' %}">Spouse Details</a></li>
+										<li><a href="{% url 'customer_service:nok_create' %}">Next of Kin</a></li>
+										<li><a href="{% url 'customer_service:additional_services_create' %}">Additional Services</a></li>
+									</ul>
+								</li>
+
+								{%  endif %}
+
+
+								{% if request.user.is_agent %}
+									<li><a href="{% url 'user:user_list' %}">Registered Users</a></li>
+									<li><a href="{% url 'customer_service:customer_list' %}">Customers</a></li>
+
+								{%  endif %}
+
+
+								{% if request.user.is_branch_manager %}
+									<li><a href="{% url 'customer_service:customer_list' %}">Customers</a></li>
+									<li><a href="{% url 'customer_service:memo_list' %}">Customer Memos</a></li>
+
+								</li>
+								{%  endif %}
+
+
+
+
+								{% if request.user.is_authenticated %}
+{#									<li><a href="{%  url 'logout' %}">Log Out</a></li>#}
+
+
+									<li><a href="{%  url 'password_change' %}">Change Password</a></li>
+
+								{%  else %}
+									<li><a href="{%  url 'login' %}">Log In</a></li>
+									<li><a href="{% url 'user:signup' %}">Create Account</a></li>
+
+								{%  endif %}
+
+							</ul>
+						</nav>
+					</div>
+					<!--/ End Main Menu -->
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+<!--/ End Header Inner -->
+

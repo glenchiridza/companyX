@@ -26,7 +26,7 @@ class LineForm(ModelForm):
     class Meta:
         model = Line
         fields = "__all__"
-        exclude = ('current_available_capacity',)
+        exclude = ('current_available_capacity','is_special_case')
 
 
 class PalletForm(ModelForm):

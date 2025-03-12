@@ -24,6 +24,7 @@ class LineDetailView(generic.DetailView):
         return Line.objects.filter(pk=self.kwargs['pk'])
 
 
+# make additional checks on capacity before saving
 class LineCreateView(generic.CreateView):
     template_name = 'packaging/line_create.html'
     form_class = LineForm
@@ -34,7 +35,15 @@ class LineCreateView(generic.CreateView):
             line = form.save(commit=False)
             line.serial_number = str(uuid.uuid4())
             line.current_available_capacity = line.capacity_limit_number
-            line.save()
+            if line.warehouse.current_available_capacity > line.max_capacity_allowed_in_kgs:
+                line.save()
+            else:
+                context = self.get_context_data(form=form)
+                context.update({"error_message": "Line of weight " + str(
+                    line.max_capacity_allowed_in_kgs) + "kgs exceeds warehouse capacity only left with " + str(
+                    line.warehouse.current_available_capacity) + "kgs in space. Try reducing rack amount or choose a "
+                                                                 "different Warehouse with more capacity "})
+                return self.render_to_response(context)
 
         return super(LineCreateView, self).form_valid(form)
 

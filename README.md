@@ -29,6 +29,15 @@ this should give you access to admin portal.
 Once in portal the link packaging will be presented which enables user to view, update, delete, perform manipulations on the items provided in dropdown options
 
 
+
+#### Additional Commands:
+To createsuper user from terminal if starting with new DB: python manage.py shell
+this will bring up a shell where you must import the user model from the user package and set the needed field values like username, password,is_staff,is_superuser, email,etc (just check fields presented in User model)
+
+once objet is saved you should exit shell and type in terminal : python manage.py changepassword
+this command will let you set a hashed password for the new admin account
+
+
 Tools:
 Django framework
 Python Programming Language

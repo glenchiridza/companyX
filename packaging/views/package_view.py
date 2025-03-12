@@ -2,6 +2,7 @@ import uuid
 
 from django.shortcuts import render, reverse
 from django.views import generic
+from django.db.models import Q
 
 from packaging.models import Package, Pallet, Line
 from packaging.forms import PackageForm
@@ -38,18 +39,13 @@ class PackageCreateView(generic.CreateView):
             package = form.save(commit=False)
             package.serial_number = str(uuid.uuid4())
             if "LOOSE" in package.package_type:
-                pallets = Pallet.objects.all()
-                for pallet in pallets:
-                    if pallet.capacity_limit_number > 0 and pallet.rack.current_available_capacity > package.mass_of_product:
-                        package.pallet = pallet
-                        package.save()
+                if package.pallet.capacity_limit_number > 0 and package.pallet.rack.current_available_capacity > package.mass_of_product:
+                    package.pallet = package.pallet
+                    package.save()
             elif "CARTON" in package.package_type:
-                lines = Line.objects.all()
-                for line in lines:
-                    if line.max_packages > 0 and line.current_available_capacity > package.mass_of_product:
-                        package.line = line
-                        package.save()
-
+                if package.line.max_packages > 0 and package.line.current_available_capacity > package.mass_of_product:
+                    package.line = package.line
+                    package.save()
             else:
                 context = self.get_context_data(form=form)
                 context.update({"error_message": "Package could not be loaded : Package Type" + str(

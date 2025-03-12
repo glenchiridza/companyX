@@ -34,7 +34,7 @@ class LineCreateView(generic.CreateView):
         if form.is_valid():
             line = form.save(commit=False)
             line.serial_number = str(uuid.uuid4())
-            line.current_available_capacity = line.capacity_limit_number
+            line.current_available_capacity = line.max_capacity_allowed_in_kgs
             if line.warehouse.current_available_capacity > line.max_capacity_allowed_in_kgs:
                 line.save()
             else:

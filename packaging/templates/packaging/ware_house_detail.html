@@ -20,6 +20,55 @@
     </div>
 
 </div>
+<hr/>
+<div class="container">
+
+    <h5>Warehouse SnapShot</h5>
+
+    <div class="row">
+
+    <h5 class="col-12">Lines</h5>
+        <ol>
+    {% for line in lines %}
+            <li>
+        <p class="col-12 text-dark">{{ line.name }}</p>
+        <a class="col-12 text-success" href="{% url 'packaging-service:line_detail' line.pk %}">View Line Details</a>
+            </li>
+            <br/>
+    {% endfor %}
+        </ol>
+    </div>
+
+    <hr/>
+    <div class="row">
+
+    <h5 class="col-12">Racks</h5>
+        <ol>
+    {% for rack in racks %}
+            <li>
+        <p class="col-12 text-dark">{{ rack.name }}</p>
+        <a class="col-12 text-success" href="{% url 'packaging-service:rack_detail' rack.pk %}">View Rack Details</a>
+                <p class="ml-3 text-warning"><strong>Pallet in this rack</strong></p>
+                {% for pallet in pallets %}
+                    <p class="col-12 text-dark">Serial Number: {{ pallet.serial_number }}</p>
+                    <a class="col-12 text-success" href="{% url 'packaging-service:pallet_detail' pallet.pk %}">View Pallet Details</a>
+                {% endfor %}
+                <hr/>
+                <p class="ml-3 text-warning"><strong>Packages in this pallet</strong></p>
+                {% for package in packages %}
+                    <p class="col-12 text-dark">Package Name: {{ package.name }}</p>
+                    <a class="col-12 text-success" href="{% url 'packaging-service:package_detail' package.pk %}">View Package Details</a>
+                {% endfor %}
+
+            </li>
+            <br/>
+    {% endfor %}
+        </ol>
+    </div>
+
+
+</div>
+<hr/>
 
 
 

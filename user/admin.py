@@ -1,10 +1,10 @@
 from django.contrib import admin
 
-from user.models import User, BranchManager, \
+from user.models import User, LogisticsManager, \
     Operator
 
 admin.site.register(User)
-admin.site.register(BranchManager)
+admin.site.register(LogisticsManager)
 admin.site.register(Operator)
 
 

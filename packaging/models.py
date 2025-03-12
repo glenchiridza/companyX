@@ -46,7 +46,7 @@ class Pallet(models.Model):
     serial_number = models.CharField(max_length=100)
     capacity_limit_number = models.PositiveIntegerField(default=0)
     current_available_capacity = models.PositiveIntegerField(default=0)
-    rack = models.ForeignKey('Rack', on_delete=models.CASCADE)
+    rack = models.ForeignKey('Rack',related_name='rel_pallet', on_delete=models.CASCADE)
 
     def __str__(self):
         return f'Pallet serial:: {self.serial_number}'

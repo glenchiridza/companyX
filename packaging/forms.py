@@ -20,6 +20,7 @@ class PackageForm(ModelForm):
     class Meta:
         model = Package
         fields = "__all__"
+        exclude = ('serial_number',)
 
 
 class LineForm(ModelForm):

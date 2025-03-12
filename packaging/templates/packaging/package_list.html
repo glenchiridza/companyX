@@ -1,0 +1,29 @@
+{%  extends 'base.html' %}
+
+{%  block content %}
+
+<div class="container text-center">
+
+    Package(s) Count: {{ packages.count }}
+    <br/>
+
+    <a class="btn btn-sm text-white" href="{% url 'packaging-service:package_create' %}">Add New  Package</a>
+
+</div>
+
+<div class="container mt-5">
+    <ol>
+        {% for package in packages %}
+
+                <li>
+                    <a class="text-success" href="{% url 'packaging-service:package_detail' package.pk %}">Package Name{{ package.name }}</a>
+
+                </li>
+        {%  endfor %}
+    </ol>
+
+
+
+</div>
+
+{%  endblock %}

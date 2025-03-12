@@ -1,6 +1,6 @@
 from django.forms import ModelForm
 
-from .models import Warehouse, Rack, Pallet, Line
+from .models import Warehouse, Rack, Pallet, Line, Package
 
 
 class WareHouseForm(ModelForm):
@@ -15,6 +15,11 @@ class RackForm(ModelForm):
         model = Rack
         fields = "__all__"
         exclude = ('current_available_capacity',)
+
+class PackageForm(ModelForm):
+    class Meta:
+        model = Package
+        fields = "__all__"
 
 
 class LineForm(ModelForm):

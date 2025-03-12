@@ -12,7 +12,10 @@ from packaging.views.pallet_view import (
     PalletListView, PalletCreateView, PalletDetailView, PalletUpdateView,PalletDeleteView
 )
 from packaging.views.line_view import (
-    LineistView, LineCreateView, LineDetailView, LineUpdateView,LineDeleteView
+    LineListView, LineCreateView, LineDetailView, LineUpdateView,LineDeleteView
+)
+from packaging.views.package_view import (
+    PackageListView, PackageCreateView, PackageDetailView, PackageUpdateView,PackageDeleteView
 )
 
 app_name = 'packaging'
@@ -42,7 +45,15 @@ urlpatterns = [
     ### line urls
     path('create-line/', LineCreateView.as_view(), name='line_create'),
     path('list-line/', LineListView.as_view(), name='line_list'),
-    path('line-detail/<int:pk>/', LineetailView.as_view(), name='line_detail'),
+    path('line-detail/<int:pk>/', LineDetailView.as_view(), name='line_detail'),
     path('line/<int:pk>/update', LineUpdateView.as_view(), name='line_update'),
     path('line/<int:pk>/delete', LineDeleteView.as_view(), name='line_delete'),
+
+
+    ### package urls
+    path('create-package/', PackageCreateView.as_view(), name='package_create'),
+    path('list-package/', PackageListView.as_view(), name='package_list'),
+    path('package-detail/<int:pk>/', PackageDetailView.as_view(), name='package_detail'),
+    path('package/<int:pk>/update', PackageUpdateView.as_view(), name='package_update'),
+    path('package/<int:pk>/delete', PackageDeleteView.as_view(), name='package_delete'),
 ]

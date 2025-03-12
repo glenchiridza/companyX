@@ -1,0 +1,35 @@
+{%  extends 'base.html' %}
+
+{%  block content %}
+
+<div class="container text-center">
+    <h5>Package Details</h5>
+</div>
+
+<div class="container">
+
+    <a class="btn btn-sm text-white" href="{% url 'packaging-service:package_create' %}">Add New  Package</a>
+
+    <h5>Name : {{ package.name }}</h5>
+    <h5>Serial Number : {{ package.serial_number }}</h5>
+    <h5>Package Type : {{ package.package_type }}</h5>
+    <p>Type of Product : {{ package.type_of_product }}</p>
+    <p>Mass of Product (kgs) : {{ package.mass_of_product }}</p>
+    {% if package.line %}
+    <p>Located in Line: {{ package.line.name }}</p>
+    {% endif %}
+    {% if package.pallet %}
+    <p>Located in Line: {{ package.pallet.name }}</p>
+    {% endif %}
+
+    <div class="row">
+        <a class="text-success col-md-6" href="{% url 'packaging-service:package_update' package.pk %}">Update</a>
+        <a class="text-danger col-md-6" href="{% url 'packaging-service:package_delete' package.pk %}">Delete</a>
+    </div>
+
+</div>
+
+
+
+
+{%  endblock %}

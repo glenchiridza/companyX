@@ -16,11 +16,11 @@ python manage.py migrate
 should see link : 127.0.0.1:8000/
 this will take you to home page where you access authentication links and app landing paging
 user/ operator must register before being able to access the system that allows the automation of processes as assigned in document
-if using already existing db, you can use the pre-registered user with username : **glenc** and password :  **ostenatious**
+if using already existing db, you can use the pre-registered user with username : **glenc** and password :  **ostentatious$97**
 
 from link 127.0.0.1:8000/admin
 this is the admin portal where admin can have comprehensive view of information in the database.
-currently if using already provided db :username is **glenc** and password is  **ostenatious**
+currently if using already provided db :username is **glenc** and password is  **ostentatious$97**
 this should give you access to admin portal.
 
  In this portal is where you are able to set user authority as to whether registered users of the app are just **operators** or a **logistics manager** in order to differentiate roles
